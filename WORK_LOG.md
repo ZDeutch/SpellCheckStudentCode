@@ -1,9 +1,9 @@
 Name: YOUR NAME HERE
 
-| Date    |  Time  |                                     Update |
-|:--------|:------:|-------------------------------------------:|
-| April 5 | 9-10pm | I tried to write abstract, efficient code. |
-|         |        |                                            |
+| Date         |      Time      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Update |
+|:-------------|:--------------:|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| April 5      |     9-10pm     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           I tried to write abstract, efficient code. |
+| September 25 | 1:00 - 1:40 pm | I spent this time writing the conventional code in bad runtime complexity to pass the tests and act as a baseline. The idea I am thinking about is making the array a set, as Gemini taught me how that structure has constant lookups through a process called hashing. I am learning more by reading the Oracle documentation guide, but I am not sure if this will be all I have to do. I wonder how compareto can be replaced by AASCI values, and why that would cut the constant lookups. This felt like a good start for my redemption arc... |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
