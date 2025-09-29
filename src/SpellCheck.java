@@ -1,8 +1,4 @@
-import com.sun.source.tree.ArrayAccessTree;
-
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Spell Check
@@ -24,17 +20,38 @@ public class SpellCheck {
      * @return String[] of all mispelled words in the order they appear in text. No duplicates.
      */
     public String[] checkWords(String[] text, String[] dictionary) {
+        int modulo = dictionary.length;
+        String[] newDictionary = new String[modulo];
+        ArrayList<String> incorrect = new ArrayList<String>();
         for(int i = 0; i < dictionary.length; i++) {
-            int num_val = 0;
             int word_sum = 0;
             int pow_10 = 1;
             for(int j = dictionary[i].length() - 1; j > 0; j--) {
                 char c = dictionary[i].charAt(j);
                 int aasci = (int) c;
-                word_sum += aasci * pow_10;
-                pow_10 *= 10;
+                word_sum = (word_sum + ((aasci * pow_10) % modulo)) % modulo;
+                pow_10 = (pow_10 * 10) % modulo;
+            }
+            newDictionary[word_sum] = dictionary[i];
+        }
+
+        for(int i = 0; i < text.length; i++) {
+            int word_sum = 0;
+            int pow_10 = 1;
+            for(int j = text[i].length() - 1; j > 0; j--) {
+                char c = text[i].charAt(j);
+                int aasci = (int) c;
+                word_sum = (word_sum + ((aasci * pow_10) % modulo)) % modulo;
+                pow_10 = (pow_10 * 10) % modulo;
+            }
+            if(newDictionary[word_sum] == null) {
+                incorrect.add(text[i]);
+            } else if (!text[i].equals(newDictionary[word_sum])) {
+                incorrect.add(text[i]);
             }
         }
+
+        return incorrect.toArray(new String[0]);
     }
 
 
