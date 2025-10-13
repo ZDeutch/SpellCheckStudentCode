@@ -1,12 +1,12 @@
-public class Node {
+public class NodeTrie {
     boolean isWord;
-    Node[] nextNode;
+    NodeTrie[] nextNode;
 
-    public Node() {
+    public NodeTrie() {
         isWord = false;
-        nextNode = new Node[256];
-
+        nextNode = new NodeTrie[256];
     }
+
 
     public boolean isWord() {
         return isWord;
@@ -16,15 +16,15 @@ public class Node {
         isWord = word;
     }
 
-    public Node[] getNextNode() {
+    public NodeTrie[] getNextNode() {
         return nextNode;
     }
 
-    public Node getChild(char c) {
+    public NodeTrie getChild(char c) {
         return nextNode[c];
     }
 
-    public void setChild(char c, Node node) {
+    public void setChild(char c, NodeTrie node) {
         nextNode[c] = node;
     }
 }
