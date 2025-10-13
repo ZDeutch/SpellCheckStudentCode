@@ -20,37 +20,54 @@ public class SpellCheck {
      * @return String[] of all mispelled words in the order they appear in text. No duplicates.
      */
     public String[] checkWords(String[] text, String[] dictionary) {
+        // Run this line of code to run a Trie
 //        return Trie(text, dictionary);
+
+        // Run this line of code to run a TST
         return TST(text, dictionary);
     }
 
+    // Method to run a Trie
     public String[] Trie(String[] text, String[] dictionary) {
         Trie game = new Trie();
+        // Create an arrayList of the incorrect words
         ArrayList<String> incorrect = new ArrayList<>();
-        for(int i = 0; i < dictionary.length; i++) {
+
+        // Insert each word in the dictionary to the Trie
+        for (int i = 0; i < dictionary.length; i++) {
             game.insert(dictionary[i]);
         }
 
-        for(int i = 0; i < text.length; i++) {
-            if(!game.lookup(text[i])) {
+        for (int i = 0; i < text.length; i++) {
+            // If the word in text is not found
+            if (!game.lookup(text[i])) {
+
+                // Add to arrayList
                 incorrect.add(text[i]);
             }
         }
+        // Convert to array and return
         return incorrect.toArray(new String[0]);
     }
 
+    // Method to run a TST
     public String[] TST(String[] text, String[] dictionary) {
         TST game = new TST();
+        // Create an arrayList of the incorrect words
         ArrayList<String> incorrect = new ArrayList<>();
-        for(int i = 0; i < dictionary.length; i++) {
+        for (int i = 0; i < dictionary.length; i++) {
+            // Insert each word in the dictionary to the TST
             game.insert(dictionary[i]);
         }
 
-        for(int i = 0; i < text.length; i++) {
-            if(!game.find(text[i])) {
+        for (int i = 0; i < text.length; i++) {
+            // If the word in text is not found
+            if (!game.find(text[i])) {
+                // Add to arrayList
                 incorrect.add(text[i]);
             }
         }
+        // Convert to array and return
         return incorrect.toArray(new String[0]);
     }
 }
