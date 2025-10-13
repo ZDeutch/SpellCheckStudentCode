@@ -20,6 +20,11 @@ public class SpellCheck {
      * @return String[] of all mispelled words in the order they appear in text. No duplicates.
      */
     public String[] checkWords(String[] text, String[] dictionary) {
+//        return Trie(text, dictionary);
+        return TST(text, dictionary);
+    }
+
+    public String[] Trie(String[] text, String[] dictionary) {
         Trie game = new Trie();
         ArrayList<String> incorrect = new ArrayList<>();
         for(int i = 0; i < dictionary.length; i++) {
@@ -28,6 +33,21 @@ public class SpellCheck {
 
         for(int i = 0; i < text.length; i++) {
             if(!game.lookup(text[i])) {
+                incorrect.add(text[i]);
+            }
+        }
+        return incorrect.toArray(new String[0]);
+    }
+
+    public String[] TST(String[] text, String[] dictionary) {
+        TST game = new TST();
+        ArrayList<String> incorrect = new ArrayList<>();
+        for(int i = 0; i < dictionary.length; i++) {
+            game.insert(dictionary[i]);
+        }
+
+        for(int i = 0; i < text.length; i++) {
+            if(!game.find(text[i])) {
                 incorrect.add(text[i]);
             }
         }

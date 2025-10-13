@@ -28,6 +28,31 @@ public class TST {
             temp.setWord(true);
         }
     }
+    
+    public boolean find(String s) {
+        NodeTST temp = root;
+        
+        for(int i = 0; i < s.length(); i++) {
+            while(s.charAt(i) != temp.getCurrent()) {
+                if(s.charAt(i) > temp.getCurrent()) {
+                    if(temp.getRight() == null) {
+                        return false;
+                    }
+                    temp = temp.getRight();
+                } else if(s.charAt(i) < temp.getCurrent()) {
+                    if(temp.getLeft() == null) {
+                        return false;
+                    }
+                    temp = temp.getLeft();
+                }
+            }
+            if(temp.getMiddle() == null) {
+                return false;
+            } 
+            temp = temp.getMiddle();
+        }
+        return true;
+    }
 
 
 }
